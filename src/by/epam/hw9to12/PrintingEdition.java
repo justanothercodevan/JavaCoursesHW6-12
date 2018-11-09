@@ -1,6 +1,6 @@
 package by.epam.hw9to12;
 
-public class PrintingEdition {
+public class PrintingEdition implements Comparable <PrintingEdition>{
 	private String title;
 	private int yearPublished;
 	private int price;	
@@ -24,6 +24,12 @@ public class PrintingEdition {
 
 	public int getPrice() {
 		return price;
+	}
+
+	@Override
+	public int compareTo(PrintingEdition obj) {
+		int anotherPrice = obj.getPrice();
+		return this.price - anotherPrice;
 	}
 
 	
