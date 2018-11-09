@@ -25,12 +25,20 @@ public class Library {
 				findings.add(this.editions.get(i));
 			}
 		}
-		return null;
+		return findings;
 	}
 	
 	public void printList(List <PrintingEdition> list ) {
-		for (int i = 0; i < this.editions.size(); i++) {
-			System.out.println(this.editions.get(i));
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i).getTitle());
+		}
+	}
+	
+	public void printTable(List <PrintingEdition> list ) {
+		System.out.println("Title\t\tYear\t\tPrice\t");
+		System.out.println("--------------------------------------");
+		for (int i = 0; i < list.size(); i++) {			
+			System.out.println(list.get(i).getTitle() + "\t" +  list.get(i).getYearPublished() + "\t\t" + list.get(i).getPrice());
 		}
 	}
 	
