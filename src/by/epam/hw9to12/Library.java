@@ -1,7 +1,11 @@
 package by.epam.hw9to12;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -54,6 +58,16 @@ public class Library {
 		for (int i = 0; i < list.size(); i++) {			
 			System.out.println(list.get(i).getTitle() + "\t" +  list.get(i).getYearPublished() + "\t\t" + list.get(i).getPrice());
 		}
+	}
+	
+	public void readFromFile(String fileName) throws IOException {
+		FileReader fr = new FileReader (fileName);
+		Scanner scan = new Scanner(fr);
+		while (scan.hasNextLine()) {
+			String [] mas = scan.nextLine().split(",");
+			addEdition(new PrintingEdition(mas[0], Integer.parseInt(mas[1]), Integer.parseInt(mas[2])));
+		}
+		fr.close();
 	}
 	
 }

@@ -1,11 +1,12 @@
 package by.epam.hw9to12;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.TreeSet;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		Library lib = new Library();
 		
 		ProgrammerBook pBook = new ProgrammerBook("JAVA Core",2013,20000, "Ekkel","Java");
@@ -29,6 +30,16 @@ public class Main {
 		
 		TreeSet <PrintingEdition> set = new TreeSet<>();
 		set = lib.findByAuthor("Smith");
+		
+		System.out.println();
+		for (PrintingEdition element : set)
+			System.out.println(element.getTitle() + " " + element.getPrice());
+		
+		// second way
+		Library lib2 = new Library();
+		lib2.readFromFile("C:\\Users\\ivan_\\git\\JavaCoursesHW6-12\\src\\Books");
+		TreeSet <PrintingEdition> set2 = new TreeSet<>();
+		set2 = lib2.findByAuthor("Smith");
 		
 		System.out.println();
 		for (PrintingEdition element : set)
