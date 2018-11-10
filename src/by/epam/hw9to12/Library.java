@@ -2,6 +2,8 @@ package by.epam.hw9to12;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Library {
 	private List <PrintingEdition> editions = new ArrayList<PrintingEdition> ();
@@ -18,7 +20,7 @@ public class Library {
 		}		
 	}
 	
-	public List <PrintingEdition>  findByTitle(String title) {
+	public List <PrintingEdition> findByTitle(String title) {
 		List <PrintingEdition> findings = new ArrayList<PrintingEdition> ();
 		for (int i = 0; i < this.editions.size(); i++) {
 			if (this.editions.get(i).getTitle() == title) {
@@ -26,6 +28,18 @@ public class Library {
 			}
 		}
 		return findings;
+	}
+	
+	public TreeSet <PrintingEdition> findByAuthor(String author) {
+		TreeSet <PrintingEdition> set = new TreeSet<>();
+		for (int i = 0; i < this.editions.size(); i++) {
+			if (this.editions.get(i) instanceof Book) {
+				if (((Book)this.editions.get(i)).getAuthor() == author) {
+					set.add(this.editions.get(i));
+				}
+			}
+		}
+		return set;
 	}
 	
 	public void printList(List <PrintingEdition> list ) {

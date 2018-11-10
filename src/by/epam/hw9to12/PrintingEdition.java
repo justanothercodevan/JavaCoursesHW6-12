@@ -29,7 +29,19 @@ public class PrintingEdition implements Comparable <PrintingEdition>{
 	@Override
 	public int compareTo(PrintingEdition obj) {
 		int anotherPrice = obj.getPrice();
-		return this.price - anotherPrice;
+		int anotherYear = obj.getYearPublished();
+		
+		if (this.price < anotherPrice)
+			return -1;
+		else if (this.price == anotherPrice) {
+			if (this.yearPublished < anotherYear)
+				return -1;
+			else if (this.yearPublished == anotherYear)
+				return 0;
+			else
+				return 1;
+		} else
+			return 1;
 	}
 
 	
